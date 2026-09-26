@@ -82,3 +82,16 @@ Cada vez que se haga un `git commit`, Husky ejecutará ESLint sobre todos los ar
 ---
 
 ## Pruebas:
+Prueba de eslint en consola para verificar errores instantáneos:
+<img width="778" height="361" alt="image" src="https://github.com/user-attachments/assets/920569f3-2387-4f01-9eac-698203ffe8a8" />
+
+Prueba de commit donde husky bloquea basándose en la configuración de eslint:
+<img width="541" height="341" alt="image" src="https://github.com/user-attachments/assets/e6d4e705-339f-4e91-a75a-93ca03684b00" />
+
+
+
+Vista de la mini API:
+<img width="1469" height="597" alt="image" src="https://github.com/user-attachments/assets/7710597e-6bf6-43fc-b039-d6017632b0a4" />
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f60eea10-b88e-4d62-9df5-ca5fe5126b90" />
+
+
