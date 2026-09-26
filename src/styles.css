@@ -1,0 +1,277 @@
+/* ---------- RESET BÁSICO ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- FUENTE ESTILO SCI-FI ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Press+Start+2P&display=swap');
+
+/* ---------- BODY: FONDO ESPACIAL ---------- */
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: radial-gradient(ellipse at center, #0d1b2a 0%, #000814 60%, #000 100%);
+    color: #e0fbfc;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #97f9f9, transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #97f9f9, transparent),
+        radial-gradient(2px 2px at 160px 120px, #fff, transparent);
+    background-size: 200px 200px;
+    opacity: 0.5;
+    animation: estrellas 60s linear infinite;
+    z-index: -1;
+}
+
+@keyframes estrellas {
+    from { background-position: 0 0; }
+    to   { background-position: 200px 200px; }
+}
+
+/* ---------- TÍTULO ---------- */
+h1 {
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: #97f9f9;
+    text-shadow:
+        0 0 10px #97f9f9,
+        0 0 20px #02c39a,
+        0 0 40px #02c39a;
+    margin: 20px 0 30px;
+    letter-spacing: 2px;
+}
+
+/* ---------- BARRA DE BÚSQUEDA ---------- */
+.buscador {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+#busqueda {
+    padding: 12px 18px;
+    width: min(400px, 80vw);
+    border: 2px solid #02c39a;
+    border-radius: 30px;
+    background: rgba(0, 8, 20, 0.8);
+    color: #97f9f9;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 0 15px rgba(2, 195, 154, 0.5);
+    transition: all 0.3s ease;
+}
+
+#busqueda::placeholder {
+    color: rgba(151, 249, 249, 0.5);
+}
+
+#busqueda:focus {
+    border-color: #97f9f9;
+    box-shadow:
+        0 0 20px #97f9f9,
+        0 0 40px rgba(2, 195, 154, 0.6);
+    transform: scale(1.02);
+}
+
+#boton {
+    padding: 12px 28px;
+    border: 2px solid #97f9f9;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #02c39a, #00a896);
+    color: #000814;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(151, 249, 249, 0.7);
+    transition: all 0.25s ease;
+}
+
+#boton:hover {
+    background: linear-gradient(135deg, #97f9f9, #02c39a);
+    box-shadow:
+        0 0 25px #97f9f9,
+        0 0 50px #02c39a;
+    transform: translateY(-2px) scale(1.05);
+}
+
+#boton:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ---------- CONTENEDOR DE TARJETAS ---------- */
+#contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ---------- TARJETA DE PERSONAJE ---------- */
+.card {
+    background: linear-gradient(160deg, #0d1b2a 0%, #1b263b 100%);
+    border: 2px solid #02c39a;
+    border-radius: 18px;
+    overflow: hidden;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    box-shadow:
+        0 0 15px rgba(2, 195, 154, 0.4),
+        inset 0 0 20px rgba(0, 0, 0, 0.6);
+    transition: all 0.35s ease;
+    animation: aparecer 0.5s ease forwards;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow:
+        0 0 25px #97f9f9,
+        0 0 60px rgba(2, 195, 154, 0.7),
+        inset 0 0 25px rgba(151, 249, 249, 0.15);
+    border-color: #97f9f9;
+}
+
+/* Imagen del personaje */
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #97f9f9;
+    box-shadow: 0 0 15px rgba(151, 249, 249, 0.5);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #97f9f9;
+}
+
+/* Nombre */
+.card h2 {
+    font-size: 1.1rem;
+    color: #97f9f9;
+    margin: 12px 0 8px;
+    text-shadow: 0 0 8px rgba(151, 249, 249, 0.7);
+    letter-spacing: 1px;
+}
+
+/* Datos */
+.card p {
+    font-size: 0.8rem;
+    color: #caf0f8;
+    margin: 4px 0;
+    line-height: 1.4;
+}
+
+.card p::first-letter {
+    color: #02c39a;
+    font-weight: 700;
+}
+
+/* ---------- TARJETA DE ERROR ---------- */
+.error-card {
+    grid-column: 1 / -1;
+    background: linear-gradient(160deg, #2b0a0a 0%, #1a0000 100%);
+    border: 2px solid #ff4d6d;
+    border-radius: 18px;
+    padding: 40px 25px;
+    text-align: center;
+    box-shadow:
+        0 0 25px rgba(255, 77, 109, 0.6),
+        inset 0 0 30px rgba(255, 77, 109, 0.15);
+    animation: pulso 1.8s ease-in-out infinite;
+}
+
+@keyframes pulso {
+    0%, 100% { box-shadow: 0 0 25px rgba(255, 77, 109, 0.6), inset 0 0 30px rgba(255, 77, 109, 0.15); }
+    50%      { box-shadow: 0 0 45px rgba(255, 77, 109, 0.9), inset 0 0 40px rgba(255, 77, 109, 0.25); }
+}
+
+.error-card h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #ff4d6d;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px #ff4d6d;
+}
+
+.error-card p {
+    color: #ffb3c1;
+    font-size: 0.9rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+    #contenedor {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .card img {
+        height: 170px;
+    }
+
+    .card h2 {
+        font-size: 0.95rem;
+    }
+
+    .card p {
+        font-size: 0.72rem;
+    }
+}
+
+/* ---------- SCROLLBAR TEMÁTICA ---------- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000814;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#02c39a, #97f9f9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #02c39a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(#97f9f9, #02c39a);
+}
